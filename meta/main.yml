@@ -1,0 +1,23 @@
+---
+
+galaxy_info:
+  author: derJD
+  description: Rebooting node only if necessary.
+  license: BSD
+  role_name: reboot
+  min_ansible_version: 2.7
+  platforms:
+    - name: Debian
+      versions:
+        - all
+    - name: Ubuntu
+      versions:
+        - all
+    - name: EL
+      versions:
+        - all
+
+  galaxy_tags:
+    - system
+
+dependencies: []

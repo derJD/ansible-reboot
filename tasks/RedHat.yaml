@@ -1,0 +1,10 @@
+---
+
+- name: ensure needs-reboot is there
+  package: name=yum-utils state=present
+
+- name: check if reboot is required
+  command: needs-restarting -r
+  register: rr
+  changed_when: not rr.rc
+  notify: reboot node

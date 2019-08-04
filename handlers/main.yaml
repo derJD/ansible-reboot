@@ -1,0 +1,9 @@
+---
+
+- name: reboot
+  reboot: test_command={{ reboot_test_command }}
+  register: rv
+  listen: reboot node
+- name: get uptime
+  debug: msg="Rebooted in {{ rv.elapsed }} seconds"
+  listen: reboot node
