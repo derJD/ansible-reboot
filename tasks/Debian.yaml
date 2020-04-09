@@ -3,7 +3,7 @@
 - name: check if reboot is required
   stat: path=/var/run/reboot-required
   register: f
-  changed_when:
-    - f.stat.exists
-    - reboot_uptime_days is defined and facter_system_uptime.days > reboot_uptime_days
+  changed_when: >
+    f.stat.exists or
+    (reboot_uptime_days is defined and facter_system_uptime.hours > reboot_uptime_days)
   notify: reboot node
