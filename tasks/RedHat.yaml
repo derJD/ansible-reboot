@@ -6,5 +6,7 @@
 - name: check if reboot is required
   command: needs-restarting -r
   register: rr
-  changed_when: not rr.rc
+  changed_when: >-
+    not rr.rc or
+    (reboot_uptime_days is defined and ansible_uptime_seconds / 86400 > reboot_uptime_days)
   notify: reboot node
