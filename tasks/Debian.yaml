@@ -5,5 +5,5 @@
   register: f
   changed_when: >
     f.stat.exists or
-    (reboot_uptime_days is defined and facter_system_uptime.hours > reboot_uptime_days)
+    (reboot_uptime_days is defined and ansible_uptime_seconds / 86400 > reboot_uptime_days)
   notify: reboot node
